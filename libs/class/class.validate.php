@@ -27,6 +27,25 @@ class validation{
         }
         
     }
+
+    function login($user , $password ){
+        if($result->num_rows == 1)
+  {
+    $row = $result->fetch_assoc();
+    if(password_verify($password,$row['password']))
+    {
+      return $row['username'] ;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  else
+  {
+    return false;
+  }
+    }
 }
 
 
