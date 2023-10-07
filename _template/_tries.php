@@ -5,7 +5,7 @@
     </form>
 <script>
     function add(){
-        window.location.href = '/phpcheck/index.php'
+       window.location.href = '/phpcheck/index.php'
     }
 </script>
 <?php
