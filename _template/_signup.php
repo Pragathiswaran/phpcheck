@@ -1,7 +1,7 @@
 
-<?php /*
-$sign = false;
-//print_r($_POST);
+<?php 
+//$sign = false;
+/*print_r($_POST);
 if(isset($_POST['name'])){
   $var = $_POST['name'];
   $result = new get();
@@ -25,9 +25,8 @@ if($sign){
     echo "fail";
   }
 }else {
- 
-
-/*$signup = false;
+*/
+$signup = false;
 if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])
 && !empty($_POST['password'])){
   $name=$_POST['name'];
@@ -35,28 +34,28 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
   $email=$_POST['email'];
   $password=$_POST['password'];
   //echo $name.$phone.$email.$password;
-  //$error = new signup;
- // $error->authentication($name);
-  //$error->Singup($name,$phone,$email,$password);
+  $error = new signup;
+  $error->authentication($name);
+  $error->Singup($name,$phone,$email,$password);
   $signup = true; 
 } 
 if($signup){
-  if(!$error){ ?>
+  if($error->authentication($name)){ echo "success";?>
     <main class="container">
       <div class="bg-light p-5 rounded mt-3">
         <h1>Signup success</h1>
         <p class="lead">This example is a quick exercise to illustrate </p>
       </div>
     </main>
-  <?php } else { ?>
+  <?php } else { echo "failed";?>
     <main class="container">
       <div class="bg-light p-5 rounded mt-3">
         <h1>Signup fail</h1>
         <p class="lead"><?php echo $error ?>  </p>
       </div>
     </main>
-<?php/* }
-}else { */
+<?php }
+}else { 
 ?>
 <p id="demo"></p>
 <section class="section_form">
@@ -70,8 +69,8 @@ if($signup){
   </form>
   
 </section>
-<?php //}  ?> 
-
+<?php }  ?> 
+<!--
 <script>
     document.getElementById("consultation-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
@@ -104,6 +103,6 @@ if($signup){
         }
     </script>
 
-
+      -->
 
 

@@ -1,15 +1,18 @@
 <?php 
  $value=false;
+ print_r($_POST);
  if(isset($_POST['serial']) && !empty($_POST['serial'])){
  $validate = $_POST['serial'];
- $result= new validation;
- $result->validate($validate);
- $result->triesvalidate;
+ //$result= new validation;
+ //$result->validate($validate);
+ $result=validation($validate);
+ //$result->triesvalidate;
+ //print($result->validate($validate));
  $value=true;
  }
- if($value){
-      if($result->validate($validate)== TRUE ){
-        print($result->validate($validate));
+ if($value==true){
+      if($result){
+        //print($result->validate($validate));
         $jsonString = file_get_contents("count.json");
         $data = json_decode($jsonString, true);
         if($data != null){
@@ -17,7 +20,7 @@
         }
         $newJsonString = json_encode($data);
         file_put_contents('count.json', $newJsonString);
-        header('Location: libs/tries.php');
+        header('Location:tries.php');
       }else{
 ?>
 <main class="container">
@@ -30,7 +33,6 @@
 }
  } else {
    ?>
-
  <form method="post" action="index.php">
  <h1 class="h3 mb-3 fw-normal"></h1>
 
@@ -44,4 +46,4 @@
    </button> 
  </div>   
 </form>
- <?php } ?>
+ <?php echo "false";} ?>

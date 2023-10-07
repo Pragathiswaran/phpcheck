@@ -8,19 +8,19 @@ include "class/class.signup.php";
 
     function load_template($name)
 {
-    include $_SERVER['DOCUMENT_ROOT']."/app/_template/$name.php";
+    include $_SERVER['DOCUMENT_ROOT']."/phpcheck/_template/$name.php";
 }
 
 
-/*
+
 function validation($value){ 
     if($value == "praga"){
-        echo "correct";
+        return true;
     } else {
-        echo "incorrect";
+       return false;
     }
 }
-*/
+
 //$inputValue = $_POST["tx"];
 /*
 $result1 = new connection;

@@ -12,5 +12,5 @@
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/app/css/<?php print(basename($_SERVER['PHP_SELF'],'.php'))?>.css" rel="stylesheet">
+    <link href="/phpcheck/css/<?php print(basename($_SERVER['PHP_SELF'],'.php'))?>.css" rel="stylesheet">
   </head>

@@ -4,9 +4,9 @@ class connection{
     public $conn=null;
     public function connect(){
 
-    if($this->conn==null)
-    {
-        $servername = "127.0.0.1";
+     if($this->conn==null){
+
+        $servername = "172.31.96.1";
         $username = "praga";
         $password = "password";
         $dbname = "validation";
@@ -18,7 +18,7 @@ class connection{
             die("Connection failed: " . $connection->connect_error);
     
         } else {
-          
+                echo "success";
                   connection::$conn=$connection;
                   return connection::$conn;
           }

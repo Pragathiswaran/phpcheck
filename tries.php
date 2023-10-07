@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/app/css/<?php print(basename($_SERVER['PHP_SELF'],'.php'))?>.css" rel="stylesheet">
+    <link href="/phpcheck/css/<?php print(basename($_SERVER['PHP_SELF'],'.php'))?>.css" rel="stylesheet">
     
 </head>
 <body>
