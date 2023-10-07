@@ -1,4 +1,4 @@
-<body>
+    
     <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
         <button type="submit" class="tries" name="tries">Trice</button>
         <button type="button" class="back" onclick="add()" id="back">Back</button>
