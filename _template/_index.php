@@ -1,18 +1,14 @@
 <?php 
  $value=false;
- print_r($_POST);
+ //print_r($_POST);
  if(isset($_POST['serial']) && !empty($_POST['serial'])){
  $validate = $_POST['serial'];
- //$result= new validation;
- //$result->validate($validate);
- $result=validation($validate);
- //$result->triesvalidate;
- //print($result->validate($validate));
+ $result= new validation;
+ $result->validate($validate);
  $value=true;
  }
- if($value==true){
+ if($value){
       if($result){
-        //print($result->validate($validate));
         $jsonString = file_get_contents("count.json");
         $data = json_decode($jsonString, true);
         if($data != null){
@@ -46,4 +42,4 @@
    </button> 
  </div>   
 </form>
- <?php echo "false";} ?>
+ <?php } ?>

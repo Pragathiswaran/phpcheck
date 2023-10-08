@@ -12,7 +12,7 @@ include "class/class.signup.php";
 }
 
 
-
+/*
 function validation($value){ 
     if($value == "praga"){
         return true;
@@ -20,7 +20,7 @@ function validation($value){
        return false;
     }
 }
-
+*/
 //$inputValue = $_POST["tx"];
 /*
 $result1 = new connection;

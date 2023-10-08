@@ -1,34 +1,25 @@
 <?php 
-class connection{
+class connection {
+    private $conn = null;
 
-    public $conn=null;
-    public function connect(){
+    public function connect() {
+        if ($this->conn == null) {
+            $servername = "172.31.96.1";
+            $username = "praga";
+            $password = "password";
+            $dbname = "validation";
 
-     if($this->conn==null){
+            $connection = new mysqli($servername, $username, $password, $dbname);
 
-        $servername = "172.31.96.1";
-        $username = "praga";
-        $password = "password";
-        $dbname = "validation";
-    
-        $connection = new mysqli($servername, $username, $password, $dbname);
-    
-        if ($connection ->connect_error)
-        {
-            die("Connection failed: " . $connection->connect_error);
-    
-        } else {
-                echo "success";
-                  connection::$conn=$connection;
-                  return connection::$conn;
-          }
-      } else {
-        
-              return connection::$conn;
+            if ($connection->connect_error) {
+                die("Connection failed: " . $connection->connect_error);
+            } else {
+                
+                $this->conn = $connection;
             }
+        }
+            return $this->conn;
     }
 }
-
-
 
 ?>

@@ -2,27 +2,29 @@
 
 class signup{
 
-    private $conn;
+    private $conn= null;
         
-    function Singup($name,$phone,$email,$password){
+    public function __construct(){
+        $db = new connection();
+        $this->conn = $db->connect();
+    }
+    public function Singup($name,$phone,$email,$pass){
         $option= [
             'cost'=> 9,
         ];
         $password=password_hash($pass,PASSWORD_BCRYPT,$option);
-        $db = new connection();
-        $this->conn = $db->connect();
-        $sql = "INSERT INTO `Signup` (`Username`, `Phone`, `Email`, `Password`)
-        VALUES ('$name', '$phone', '$email', '$password');";
-        
+        $sql = "INSERT INTO `Signup` (`Username`, `Phone`, `Email`, `Password`, `Active`, `Block`)
+        VALUES ('$name', '$phone', '$email', '$password','0','1');";
+        print($sql);
         if ($this->conn->query($sql) === TRUE) {
-           return true;
+           return false;
         } else {
-            return false;
+           return true;
         }
+        return false;
     }
     function authentication($name){
-        $db = new connection();
-        $this->conn = $db->connect();
+    
         $sql = "SELECT * FROM `Signup` WHERE `username`= '$name' ";
         $result= $this->conn->query($sql);
         if($result->num_rows == 1)
