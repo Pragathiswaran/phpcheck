@@ -22,6 +22,9 @@ if(isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['password
   <span class="login100-form-title p-b-51">Login</span>
     <input required="" placeholder="Name" type="text" name="name">
     <input name="password" required="" placeholder="Password" type="password">
+    <div>
+      <input type="checkbox">
+      </div>
     <button class="button_submit">Submit</button>
   </form>
 </section>
