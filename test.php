@@ -1,15 +1,16 @@
 <?php
 include "libs/load.php";
 
-/*
-$result = new signup();
-$result->Singup('thanga','458762330','thanga@gmail.com','thanga@123');
+$result = new Signup();
+$value = $result->login("yenga","yenga");
+print($value);
 
-if ($result == true){
-    echo "success";
+if($value){
+    echo "true";
 } else {
-    echo "fail";
-} */
+    echo "false";    
+}
+
 
 /*
 $jsonString = file_get_contents("count.json");
@@ -21,13 +22,33 @@ $jsonString = file_get_contents("count.json");
         file_put_contents("count.json",$newJsonString);
 print($data['key1']);
 */
-$jsonFile = "count.json";
-echo file_exists($jsonFile);
-if (file_exists($jsonFile)) {
-   print("TRUE");
+/*
+// Define the JSON file path
+$jsonFilePath = 'count.json';
+
+// Read the JSON file into a variable
+$jsonData = file_get_contents($jsonFilePath);
+
+// Decode the JSON data into a PHP associative array
+$data = json_decode($jsonData, true);
+
+// Check if the key you want to change exists
+if (array_key_exists("key1", $data)) {
+    // Change the value of the "age" key
+    $data["age"] = 35;
+
+    // Encode the modified data back to JSON
+    $newJsonData = json_encode($data, JSON_PRETTY_PRINT);
+
+    // Write the updated JSON back to the same file
+    file_put_contents($jsonFilePath, $newJsonData);
+
+    echo 'The JSON file has been updated.';
 } else {
-    echo "FALSE";
+    echo 'The key "age" does not exist in the JSON data.';
 }
+
+*/
 
 
 

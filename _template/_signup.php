@@ -34,26 +34,16 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
   $email=$_POST['email'];
   $password=$_POST['password'];
   //echo $name.$phone.$email.$password;
-  $error = new signup();
-  //$error->authentication($name);
-  $error->Singup($name,$phone,$email,$password);
+  $result = new signup();
+  //$result->authentication($name);
+  $value = $result->Singup($name,$phone,$email,$password);
   $signup = true; 
 } 
 if($signup){
-  if($error){ ?>
-    <main class="container">
-      <div class="bg-light p-5 rounded mt-3">
-        <h1>Signup success</h1>
-        <p class="lead">This example is a quick exercise to illustrate </p>
-      </div>
-    </main>
-  <?php } else { ?>
-    <main class="container">
-      <div class="bg-light p-5 rounded mt-3">
-        <h1>Signup fail</h1>
-        <p class="lead"> </p>
-      </div>
-    </main>
+  if($value){ 
+    header('Location:login.php');
+  } else{ ?>
+        <h1>Signup fail the username is already exist</h1>
 <?php }
 }else { 
 ?>

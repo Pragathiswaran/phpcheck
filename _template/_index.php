@@ -11,13 +11,12 @@
       if($result){
         $jsonString = file_get_contents("count.json");
         $data = json_decode($jsonString, true);
-        print($data);
         if($data != null){
            $data['key1'] = "hello i am ".$validate;
-        } else {
-        }
         $newJsonString = json_encode($data);
         file_put_contents('count.json', $newJsonString);
+        //header('Location:tries.php');
+        }
         header('Location:tries.php');
       }else{
 ?>

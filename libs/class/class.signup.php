@@ -9,31 +9,32 @@ class signup{
         $this->conn = $db->connect();
     }
     public function Singup($name,$phone,$email,$pass){
-        $option= [
+       $option= [
             'cost'=> 9,
         ];
         $password=password_hash($pass,PASSWORD_BCRYPT,$option);
         $sql = "INSERT INTO `Signup` (`Username`, `Phone`, `Email`, `Password`, `Active`, `Block`)
         VALUES ('$name', '$phone', '$email', '$password','0','1');";
-        print($sql);
         if ($this->conn->query($sql) === TRUE) {
-           return false;
+            return true;
         } else {
-           return true;
+            return false;
         }
-        return false;
     }
-    function authentication($name){
     
+    function login($name,$pass){
         $sql = "SELECT * FROM `Signup` WHERE `username`= '$name' ";
         $result= $this->conn->query($sql);
-        if($result->num_rows == 1)
-        {
+        if($result->num_rows == 1){
             $row = $result->fetch_assoc();
-            return  ;
+            if(password_verify($pass,$row['password'])){
+                //return $row['username'];
+                return true;
+            } else {
+                return false;
+            } 
         }
-        else
-        {
+        else{
             return false;
         }
     }
