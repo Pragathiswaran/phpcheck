@@ -1,8 +1,8 @@
 <?php
 include "libs/load.php";
 
-$result = new Signup();
-$value = $result->login("yenga","yenga");
+$result = new triesvalue();
+$value = $result->addtries("yenga","yenga");
 print($value);
 
 if($value){

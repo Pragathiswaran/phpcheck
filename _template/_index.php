@@ -4,11 +4,11 @@
  if(isset($_POST['serial']) && !empty($_POST['serial'])){
  $validate = $_POST['serial'];
  $result= new validation;
- $result->validate($validate);
+ $var = $result->validate($validate);
  $value=true;
  }
  if($value){
-      if($result){
+      if($var){
         $jsonString = file_get_contents("count.json");
         $data = json_decode($jsonString, true);
         if($data != null){
@@ -17,7 +17,10 @@
         file_put_contents('count.json', $newJsonString);
         //header('Location:tries.php');
         }
-        header('Location:tries.php');
+        session_start();
+        $_SESSION['var']= $validate;
+        header('Location:libs/install.php');
+        exit();
       }else{
 ?>
 <main class="container">

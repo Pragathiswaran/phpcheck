@@ -2,7 +2,6 @@
 
 include "class/class.connect.php";
 include "class/class.validate.php";
-include "class/class.tries.php";
 include "class/class.signup.php";
 //include "count.json";
 

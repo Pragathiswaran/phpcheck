@@ -9,9 +9,8 @@ if(isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['password
 }
   if($login){
     if($value){
-      ?>
-        <h1>login success</h1>
-     <?php
+      header('Location:index.php');
+        exit();
     } else { ?>
         <h1>login fail</h1>
   <?php  }

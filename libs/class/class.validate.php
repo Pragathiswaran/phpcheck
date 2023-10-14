@@ -7,8 +7,8 @@ class validation{
         $db = new connection();
         $this->conn = $db->connect();
     } 
+
     public function validate($value){
-  
         $sql = "SELECT * FROM `validate` WHERE `serialnumber` = '$value' ";
         //print($sql);
         $result = $this->conn->query($sql);
@@ -26,33 +26,47 @@ class validation{
         }
     }
 
-    function login($user , $password ){
-        if($result->num_rows == 1)
-  {
-    $row = $result->fetch_assoc();
-    if(password_verify($password,$row['password']))
-    {
-      return $row['username'] ;
-    }
-    else
-    {
-      return false;
-    }
+    function addinstall($install){
+      $sql = "SELECT * FROM `validate` WHERE `serialnumber` = '$install'";
+      $result = $this->conn->query($sql);
+      if($result->num_rows > 0){
+          $query="SELECT * FROM `validate` WHERE `tries` = '0'";
+          $subresult  = $this->conn->query($query);
+          if($subresult->num_rows > 0){
+              $change="UPDATE `validate` SET `tries` = '1' WHERE `serialnumber` = '$install'";
+              if($this->conn->query($change) === TRUE){
+                  return true;
+              } else {
+                  return false;
+              }
+          } else {
+          return false;
+          }
+            } else {
+              return false;
+            }
+      }
+
+    function addtries($tries){
+      $sql = "SELECT * FROM `validate` WHERE `serialnumber` = '$tries'";
+      $result = $this->conn->query($sql);
+      if($result->num_rows > 0){
+          $query="SELECT * FROM `validate` WHERE `tries` = '1'";
+          $subresult  = $this->conn->query($query);
+          if($subresult->num_rows > 0){
+              $change="UPDATE `validate` SET `tries` = '2' WHERE `serialnumber` = '$tries'";
+              if($this->conn->query($change) === TRUE){
+                  return true;
+              } else {
+                  return false;
+              }
+          } else {
+          return false;
+          }
+            } else {
+              return false;
+            }
+      }
   }
-  else
-  {
-    return false;
-  }
-    }
-}
-
-
-
-
-
-
-
-
-
 
 ?>
