@@ -1,6 +1,15 @@
 <?php 
+
+session_start();
+if(isset($_POST['destroy'])){ 
+  session_unset(); 
+    session_destroy(); 
+    header('Location: login.php'); 
+    exit(); 
+} else {
+if(isset($_SESSION['username']))
+{
  $value=false;
- //print_r($_POST);
  if(isset($_POST['serial']) && !empty($_POST['serial'])){
  $validate = $_POST['serial'];
  $result= new validation;
@@ -8,20 +17,12 @@
  $value=true;
  }
  if($value){
-      if($var){
-        $jsonString = file_get_contents("count.json");
-        $data = json_decode($jsonString, true);
-        if($data != null){
-           $data['key1'] = "hello i am ".$validate;
-        $newJsonString = json_encode($data);
-        file_put_contents('count.json', $newJsonString);
-        //header('Location:tries.php');
-        }
-        session_start();
-        $_SESSION['var']= $validate;
-        header('Location:libs/install.php');
-        exit();
-      }else{
+    if($var){
+      session_start();
+      $_SESSION['var']= $validate;
+      header('Location:libs/install.php');
+      exit();
+    }else{
 ?>
 <main class="container">
   <div class="bg-light p-5 rounded mt-3">
@@ -45,5 +46,14 @@
      <span>Submit</span>
    </button> 
  </div>   
+ <div>
+ <button type="submit" name="destroy">Destroy Session</button>
+ </div>
 </form>
- <?php } ?>
+
+ <?php } 
+ } else {
+
+    header('Location:login.php');
+ }
+}?>

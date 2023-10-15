@@ -1,31 +1,5 @@
 
 <?php 
-//$sign = false;
-/*print_r($_POST);
-if(isset($_POST['name'])){
-  $var = $_POST['name'];
-  $result = new get();
-  $result->getdata($var);
-  $sign = true;
-}
-$check = null;
-if($sign){
-  if($result==true){
-    $check = $result->getdata($var);
-  ?>
-  <script>
-        var data = "<?php print $check; ?>";
-        if(data ==1){
-          document.getElementById("demo").innerHTML=data + "success";
-        }
-        
-    </script>
-  <?php
-  } else {
-    echo "fail";
-  }
-}else {
-*/
 $signup = false;
 if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])
 && !empty($_POST['password'])){
@@ -33,9 +7,7 @@ if(isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && 
   $phone=$_POST['phone'];
   $email=$_POST['email'];
   $password=$_POST['password'];
-  //echo $name.$phone.$email.$password;
   $result = new signup();
-  //$result->authentication($name);
   $value = $result->Singup($name,$phone,$email,$password);
   $signup = true; 
 } 
@@ -60,39 +32,6 @@ if($signup){
   
 </section>
 <?php }  ?> 
-<!--
-<script>
-    document.getElementById("consultation-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the default form submission
-    checkValue(); // Call your add() function
-  });
 
-  function checkValue() {
-            const inputValue = document.getElementById("tx").value;
-            
-            // Make an AJAX request to the server-side script
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "load.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle the response from the server
-                    const response = JSON.parse (xhr.responseText);
-                    const resultDiv = document.getElementById("demo");
-                    
-                    if (response.exists) {
-                        // The value exists in the database
-                        resultDiv.innerHTML = "Value already exists in the database.";
-                    } else {
-                        // The value does not exist in the database
-                        resultDiv.innerHTML = "Value does not exist in the database.";
-                    }
-                }
-            };
-            xhr.send("tx=" + encodeURIComponent(inputValue));
-        }
-    </script>
-
-      -->
 
 

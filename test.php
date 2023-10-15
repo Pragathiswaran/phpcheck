@@ -1,61 +1,32 @@
 <?php
 include "libs/load.php";
+$jsonFilePath = "libs/count.json";
 
-$result = new triesvalue();
-$value = $result->addtries("yenga","yenga");
-print($value);
-
-if($value){
-    echo "true";
+// Change the file permissions
+if (!file_exists($jsonFilePath)) {
+    echo 'File not found.';
 } else {
-    echo "false";    
+    chmod($jsonFilePath, 0777); // Change the file permissions to allow read and write
 }
 
-
-/*
-$jsonString = file_get_contents("count.json");
-        $data = json_decode($jsonString, true);
-        print($data['key1']);
-           $data['key1'] = "hello i am json";
-        $newJsonString = json_encode($data);
-        echo $newJsonString;
-        file_put_contents("count.json",$newJsonString);
-print($data['key1']);
-*/
-/*
-// Define the JSON file path
-$jsonFilePath = 'count.json';
-
-// Read the JSON file into a variable
-$jsonData = file_get_contents($jsonFilePath);
-
-// Decode the JSON data into a PHP associative array
-$data = json_decode($jsonData, true);
-
-// Check if the key you want to change exists
-if (array_key_exists("key1", $data)) {
-    // Change the value of the "age" key
-    $data["age"] = 35;
-
-    // Encode the modified data back to JSON
-    $newJsonData = json_encode($data, JSON_PRETTY_PRINT);
-
-    // Write the updated JSON back to the same file
-    file_put_contents($jsonFilePath, $newJsonData);
-
-    echo 'The JSON file has been updated.';
-} else {
-    echo 'The key "age" does not exist in the JSON data.';
+// Attempt to write to the file
+$jsonString = file_get_contents($jsonFilePath);
+if($jsonString === false) {
+    echo "Error reading count.json";
+    exit;
 }
 
-*/
+$data = json_decode($jsonString, true);
+if ($data !== null) {
+    $data['key1'] = 'hello i am meena';
+    $json = json_encode($data, JSON_PRETTY_PRINT);
+    if (file_put_contents($jsonFilePath, $json) !== false) {
+        echo "success";
+    } else {
+        echo "Error writing to count.json";
+    }
+} else {
+    echo "Error decoding JSON";
+}
 
-
-
-
-
-
-
-//$result->validate("praga");
-//print($result->connect());
 ?>

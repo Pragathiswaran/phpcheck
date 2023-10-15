@@ -3,7 +3,7 @@ body{
 }
 section{
     position: relative;
-    width: 100%;
+    width: 100px;
     bottom: -200px;
     left: 600px;
 }
@@ -14,7 +14,7 @@ section{
     line-height: 1.2;
     text-transform: uppercase;
     text-align: center;
-    width: 100%;
+    width: 300px;
     display: block
 }
 .p-b-51 {

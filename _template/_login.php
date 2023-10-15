@@ -9,8 +9,12 @@ if(isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['password
 }
   if($login){
     if($value){
+      $sess = new session();
+      $val = $sess->userSession($logName,$logPass);
+      if($val){
       header('Location:index.php');
-        exit();
+       // exit();
+      }
     } else { ?>
         <h1>login fail</h1>
   <?php  }
