@@ -1,15 +1,6 @@
 <?php 
 
 session_start();
-$inactive = 10;
-$session_life = time() - $_SESSION['username'];
-if($session_life > $inactive){  
-    $_SESSION['value']='true'; 
-    header('Location: login.php'); 
-    exit(); 
-    session_destroy();
-} else {
-
 if(isset($_SESSION['username']))
 {
  $value=false;
@@ -59,4 +50,4 @@ if(isset($_SESSION['username']))
 
     header('Location:login.php');
  }
-}?>
+?>

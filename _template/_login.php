@@ -19,12 +19,7 @@ if(isset($_POST['name']) && isset($_POST['password']) && !empty($_POST['password
     } else { ?>
         <h1>login fail</h1>
   <?php  }
-   } else {
-    session_start();
-if($_SESSION['value'] == 'true'){
-  destroy('true');
-  session_destroy();
- } 
+   } else { 
 ?>
  <section class="section_form">
   <form id="consultation-form" class="feed-form" method="post" action="login.php">

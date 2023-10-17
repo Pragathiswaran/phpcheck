@@ -3,7 +3,7 @@ include "libs/load.php";
 $jsonFilePath = "libs/count.json";
 
 // Change the file permissions
-if (!file_exists($jsonFilePath)) {
+if (!file_exists($jsonFilePath)) {  
     echo 'File not found.';
 } else {
     chmod($jsonFilePath, 0777); // Change the file permissions to allow read and write
