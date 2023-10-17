@@ -15,6 +15,8 @@ class session{
         } else {
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
+
+        $_SESSION['username']= time();
         return true;
         } 
     }

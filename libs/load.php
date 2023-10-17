@@ -10,4 +10,10 @@ include "class/class.session.php";
     include $_SERVER['DOCUMENT_ROOT']."/phpcheck/_template/$name.php";
 }
 
+   function destroy($value){
+    if($value == 'true'){
+    echo '<script>alert("The session has expired")</script>'; 
+   }
+}
+
 ?>

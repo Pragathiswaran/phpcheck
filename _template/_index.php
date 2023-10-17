@@ -1,12 +1,15 @@
 <?php 
 
 session_start();
-if(isset($_POST['destroy'])){ 
-  session_unset(); 
-    session_destroy(); 
+$inactive = 10;
+$session_life = time() - $_SESSION['username'];
+if($session_life > $inactive){  
+    $_SESSION['value']='true'; 
     header('Location: login.php'); 
     exit(); 
+    session_destroy();
 } else {
+
 if(isset($_SESSION['username']))
 {
  $value=false;
@@ -46,9 +49,9 @@ if(isset($_SESSION['username']))
      <span>Submit</span>
    </button> 
  </div>   
- <div>
+ <!--<div>
  <button type="submit" name="destroy">Destroy Session</button>
- </div>
+ </div> -->
 </form>
 
  <?php } 
